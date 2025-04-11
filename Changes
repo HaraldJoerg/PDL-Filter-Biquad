@@ -1,0 +1,7 @@
+Revision history for Perl extension PDL::Filter::Biquad.
+
+0.01  Fri Apr 11 22:28:48 2025 (haj)
+	- initial version; skeleton created by h2xs
+	- Code by haj assisted by ChatGPT
+
+

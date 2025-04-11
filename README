@@ -1,1 +1,30 @@
-Project initiated by /home/haj/bin/new_git_project
+PDL-Filter-Biquad version 0.01
+==============================
+
+This module implements a digital biquad filter, in a restricted way
+which is needed for a project by the author.
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module requires these other modules and libraries:
+
+  Perl 5.026 or newer (it might work with older versions)
+  PDL version version 2.096 or newer
+  Test::More  version 0.88 or newer
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2025 by Harald Jörg <haj@posteo.de>
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.38.2 or,
+at your option, any later version of Perl 5 you may have available.

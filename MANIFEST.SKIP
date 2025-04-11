@@ -1,0 +1,43 @@
+# Author's place for non-distributable stuff
+^junkyard
+
+# This project's temporary files
+lib/PDL/Filter/Biquad.pm
+lib/PDL/Filter/.*-pp-.*
+lib/PDL/Filter/.*.bs$
+lib/PDL/Filter/.*.c$
+lib/PDL/Filter/.*.xs$
+lib/PDL/Filter/.*.o$
+
+# Avoid version control files.
+^.git
+
+# Avoid Makemaker generated and utility files.
+\bMANIFEST\.bak
+\bblib/
+\bMakeMaker-\d
+\bpm_to_blib\.ts$
+\bpm_to_blib$
+\bblibdirs\.ts$         # 6.18 through 6.25 generated this
+
+# Avoid temp and backup files.
+~$
+\.old$
+\#$
+\b\.#
+\.bak$
+\.swp$
+
+# Avoid Devel::Cover files.
+\bcover_db\b
+
+# Don't include extra DLL and lib files
+^.*.tar.gz
+^Makefile$
+^MYMETA.json
+^MYMETA.yml
+^META.yml$
+^xt/
+
+# Avoid Devel::NYTProf stuff
+^nytprof
