@@ -13,6 +13,10 @@
 
 # Devel::Cover
 cover_db/
+*.gcda
+*.gcdo
+*.gcov
+*.gcno
 
 # Devel::NYTProf
 nytprof.out
