@@ -66,7 +66,7 @@ adjusted at every sample.  Returns a PDL array of the same length
 containing the filtered data.
 
 The filter keeps its state between consecutive calls, therefore it can
-be used to process a stream of data in batches.  
+be used to process a stream of data in batches.
 
 The cutoff frequency can be changed between consecutive calls.  It is
 also allwed to switch between a variable cutoff to a fixed cutoff.
@@ -77,6 +77,15 @@ Filtering with a fixed cutoff is considerably faster.
 It is currently not possible to "reset" a filter to its initial state.
 For data which are not a continuation of those passed to a previous
 call to C<process> please create a new filter.
+
+=head1 BENCHMARK
+
+The GitHub repository has a directory F<benchmark> with a program
+F<pdl_vs_pure.pl>.  This program compares the performance of the
+PDL::PP implementation against various pure Perl implementations.
+Bottom line: PDL::PP is more than 30 times faster than the fastest
+pure Perl implementation, which happens to use L<perlclass> (so you
+need Perl 5.38 or newer to run the benchmark).
 
 =head1 AUTHOR
 

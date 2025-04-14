@@ -20,8 +20,8 @@ sub new {
         unless $args{samplerate};
     my $self = {
         samplerate => $args{samplerate},
-        q          => $args{q} // 0.7071,  # default Butterworth
-        state      => null,                # z1, z2
+        q          => $args{q} // 1/sqrt(2), # default Butterworth
+        state      => null,                  # z1, z2
     };
     bless $self, $class;
 }
@@ -81,7 +81,7 @@ pp_def('biquad_lowpass_filter',
 
             b0 = (1.0 - cos_omega) / 2.0;
             b1 = 1.0 - cos_omega;
-            b2 = (1.0 - cos_omega) / 2.0;
+            b2 = b0;
             a1 = -2.0 * cos_omega;
             a2 = 1.0 - alpha;
 
@@ -97,7 +97,7 @@ pp_def('biquad_lowpass_filter',
             double out = b0 * in + z1;
 
             z1 = b1 * in + z2 - a1 * out;
-            z2 = b2 * in       - a2 * out;
+            z2 = b2 * in      - a2 * out;
 
             $output() = out;
         %}
@@ -165,13 +165,12 @@ pp_def('biquad_lowpass_filter_fixed',
         a1 /= a0;
         a2 /= a0;
 
-
         loop(n) %{
             double in = $input();
             double out = b0 * in + z1;
 
             z1 = b1 * in + z2 - a1 * out;
-            z2 = b2 * in       - a2 * out;
+            z2 = b2 * in      - a2 * out;
 
             $output() = out;
         %}

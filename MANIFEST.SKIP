@@ -1,5 +1,6 @@
 # Author's place for non-distributable stuff
 ^junkyard
+^benchmark
 
 # This project's temporary files
 lib/PDL/Filter/Biquad.pm
