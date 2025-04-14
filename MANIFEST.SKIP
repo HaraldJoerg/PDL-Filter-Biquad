@@ -30,6 +30,8 @@ lib/PDL/Filter/.*.o$
 
 # Avoid Devel::Cover files.
 \bcover_db\b
+.*gc(ov|da)$
+
 
 # Don't include extra DLL and lib files
 ^.*.tar.gz

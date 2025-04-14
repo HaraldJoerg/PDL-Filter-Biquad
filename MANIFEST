@@ -1,7 +1,8 @@
 Changes
+lib/PDL/Filter/Biquad.pd
+lib/PDL/Filter/Biquad.pod
 Makefile.PL
 MANIFEST
 MANIFEST.SKIP
 README
-lib/PDL/Filter/Biquad.pd
 t/biquad.t

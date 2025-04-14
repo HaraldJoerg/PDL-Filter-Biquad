@@ -1,0 +1,103 @@
+=encoding utf8
+
+=head1 NAME
+
+PDL::Filter::Biquad - A digital biquad filter
+
+=head1 SYNOPSIS
+
+  use PDL::Filter::Biquad;
+  my $filter = PDL::Filter::Biquad->new(
+      samplerate => 44100
+  );
+  my $data   = random(1000);
+  my $cutoff = 1000 - sequence(1000);
+  my $filtered = $filter->process($data,$cutoff);
+
+=head1 DESCRIPTION
+
+This module has been built as part of another, not yet released,
+project.  Its purpose is to help with creating sound from the
+definitions in a SoundFont .sf2 file.
+
+Among the "generators" of SoundFont is a low-pass filter where the
+cutoff frequency can vary according to a modulation envelope.  This
+can not be easily done by filters provided by
+L<PDL::DSP::Fir::Simple>, so I decided to try it myself, and use it as
+an exercise in L<PDL::PP>.
+
+The "raw" filter functions biquad_lowpass_filter and
+biquad_lowpass_filter_fixed are implemented in L<PDL::PP> and wrapped
+by a Perl object, which hides the "state" variables required by the
+filter.  Using the object, it can be used with streaming input.
+
+Due to the nature of C<PDL::PP>, a C compiler is required to build the
+module.  It can not be used directly from a git checkout.
+
+=head1 METHODS
+
+=head2 new
+
+The constructor of a filter object.  It takes parameters as a
+key/value list.  The keys are:
+
+=over
+
+=item samplerate (mandatory)
+
+This is the sample rate for the audio data to be processed by the
+filter, in Hz.  Knowing the sample rate allows the cutoff frequency
+of the filter to be specified in Hz, too.
+
+=item q (optional)
+
+This is the filter resonance, corresponding to the SoundFont generator
+C<initialFilterQ>.  The default is C<1/sqrt(2)>.
+
+=back
+
+=head2 process($data,$cutoff)
+
+C<$data> is a ndarray of samples to be filtered.  The parameter
+C<$cutoff> can either be a scalar, in which case filtering is done
+with a fixed cutoff frequency, or a ndarray with the same first
+dimension as C<data>, in which case the cutoff frequency will be
+adjusted at every sample.  Returns a PDL array of the same length
+containing the filtered data.
+
+The filter keeps its state between consecutive calls, therefore it can
+be used to process a stream of data in batches.  
+
+The cutoff frequency can be changed between consecutive calls.  It is
+also allwed to switch between a variable cutoff to a fixed cutoff.
+Filtering with a fixed cutoff is considerably faster.
+
+=head1 RESTRICTIONS
+
+It is currently not possible to "reset" a filter to its initial state.
+For data which are not a continuation of those passed to a previous
+call to C<process> please create a new filter.
+
+=head1 AUTHOR
+
+Harald Jörg, C<haj@posteo.de>.  Parts of the L<PDL::PP> code and tests
+were suggested by ChatGPT.
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2025 Harald Jörg.
+
+This library is free software; you may redistribute it and/or
+modify it under the same terms as Perl itself.
+
+
+=head1 SEE ALSO
+
+=over
+
+=item L<PDL::PP> has been used to create the XS sources.
+
+=back
+
+=cut
+

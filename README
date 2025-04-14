@@ -17,9 +17,11 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  Perl 5.026 or newer (it might work with older versions)
+  Perl 5.26 or newer
   PDL version version 2.096 or newer
-  Test::More  version 0.88 or newer
+  Carp (part of the Perl core)
+  Scalar::Util (part of the Perl core)
+  Test::More  version 0.88 or newer (part of the Perl core)
 
 COPYRIGHT AND LICENCE
 

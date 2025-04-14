@@ -11,17 +11,19 @@ WriteMakefile(
   MIN_PERL_VERSION => '5.026',
   LICENSE=> 'perl',
   PREREQ_PM => {
-    'PDL'  => '2.096', # deep mode
+      'Carp'         => '1.00',
+      'Scalar::Util' => '1.00',
+      'PDL'          => '2.096', # deep mode
   },
   CONFIGURE_REQUIRES => {
-    'PDL'  => '2.096',
+      'PDL'          => '2.096',
   },
-  BUILD_REQUIRES => {
-    'PDL'  => '2.096',
+  BUILD_REQUIRES     => {
+      'PDL'          => '2.096',
   },
-  TEST_REQUIRES => {
-    'Test::More' => '0.88', # done_testing
-    'Test::PDL' => '0.21',
+  TEST_REQUIRES      => {
+      'Test::More'   => '0.88', # done_testing
+      'Test::PDL'    => '0.21',
   },
 );
 
